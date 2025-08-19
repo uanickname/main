@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Генератор українських нікнеймів</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      height: 48px;
+      user-select: none;
+    }
+
+    header .left-text {
+      font-weight: bold;
+      font-size: 28px;
+      color: #222;
+    }
+
+    header .hash {
+      color: #000;
+    }
+
+    header .yellow {
+      color: #F2C94C;
+    }
+
+    header .blue {
+      color: #0057B7;
+    }
+
+    header button {
+      padding: 8px 20px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    header button:hover {
+      background-color: #45a049;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 20px 40px;
+      gap: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .title {
+      font-size: 44px;
+      font-weight: bold;
+      margin: 0;
+     user-select: none;
+      text-align: center;
+      white-space: nowrap;
+      display: flex;
+      justify-content: center;
+    }
+
+
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      border: 4px solid #000;
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+    }
+
+    .block {
+      flex: 1 1 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 4px solid #000;
+      min-height: 90px; /* было 150px */
+      padding: 10px; /* чтобы текст не прилипал */
+    }
+
+    .block:nth-child(3) {
+  border-right: none;
+    }
+
+    .generate-text {
+  font-size: 22px; /* было 28px */
+      }
+
+    #name {
+    font-size: 22px; /* было 28px */
+      }
+
+
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 15px;
+    }
+
+    .copy-icon {
+      width: 50px;
+      height: 50px;
+      position: relative;
+    }
+
+    .copy-icon::before,
+    .copy-icon::after {
+      content: '';
+      position: absolute;
+      border: 4px solid #000;
+      width: 36px;
+      height: 36px;
+    }
+
+    .copy-icon::before {
+      top: 10px;
+      left: 10px;
+    }
+
+    .copy-icon::after {
+      top: 0;
+      left: 0;
+    }
+
+   .description {
+      font-size: 20px;
+      width: 100%;
+      max-width: 600px;
+      text-align: justify;
+      line-height: 1.6;
+      user-select: none;
+      padding: 0;
+      margin-top: 50px;
+    }
+
+
+    footer {
+      background-color: #fff;
+      border-top: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 20px;
+      height: 48px;
+      user-select: none;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 16px;
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-info {
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .block {
+        flex: 1 1 100%;
+        border-right: none;
+        border-bottom: 2px solid #000;
+        min-height: 120px;
+      }
+
+      .block:last-child {
+        border-bottom: none;
+      }
+  .title {
+    font-size: 28px;
+  }
+}
+    
+     .generate-text {
+        font-size: 22px;
+      }
+
+      #name {
+        font-size: 22px;
+      }
+
+      .copy-icon {
+        width: 40px;
+        height: 40px;
+      }
+
+      .copy-icon::before,
+      .copy-icon::after {
+        width: 28px;
+        height: 28px;
+        border-width: 3px;
+      }
+
+      .description {
+        font-size: 18px;
+      }
+    
+ </style>
+</head>
+<body>
+  <header>
+    <div class="left-text">
+      <span class="yellow">UA</span><span class="blue">Nickname</span>
+    </div>
+  </header>
+
+  <main>
+    <h1 class="title">Генератор випадкових українських нікнеймів</h1>
+
+    <div class="container">
+      <div class="block">
+        <div class="generate-text" onclick="generateName()">Згенерувати</div>
+      </div>
+      <div class="block">
+        <div id="name"></div>
+      </div>
+      <div class="block">
+        <button class="copy-btn" onclick="copyName()" title="Скопіювати">
+          <div class="copy-icon"></div>
+        </button>
+      </div>
+    </div>
+
+    <div class="description">
+      Наш генератор випадкових українських нікнеймів допоможе вам швидко згенерувати ім’я для гри, соцмереж або творчих проєктів. Натисніть “Згенерувати” — і отримаєте нове ім’я миттєво!
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="contact.html">Контакти</a>
+      <a href="privacy.html">Політика конфіденційності</a>
+      <a href="terms.html">Правила користування</a>
+    </div>
+    <div class="footer-info">
+      <span>&copy; 2025</span>
+    </div>
+  </footer>
+
+  <script>
+    const names = [
+      "Арліон", "Буремко", "Віртас", "Гелмік", "Дорікс", "Елварн", "Єрфан", "Жилмор", "Зантік", "Ірвел",
+      "Їлвар", "Крастій", "Леморд", "Мірлон", "Нарінт", "Остір", "Плентос", "Ранвік", "Сірель", "Торін",
+      "Унвал", "Ферніс", "Ханвік", "Цирлон", "Чевіст", "Шарвік", "Щанвіс", "Юргас", "Ярвіс", "Брансей",
+      "Гармік", "Лорант", "Фальвіс", "Сондей", "Квістон", "Жарлон", "Термас", "Ілверт", "Данвіс", "Орліон",
+      "Флендір", "Калірт", "Вантос", "Нурел", "Ерміст", "Пальвин", "Грілтор", "Целвік", "Шорвел", "Ілдран",
+      "Ярлікс", "Фірманд", "Озерик", "Транвік", "Гілрот", "Червел", "Щорен", "Кендріс", "Юрвант", "Жермік",
+      "Скальрон", "Ліверт", "Ролтар", "Арвест", "Кальдор", "Мейвіс", "Бринтар", "Жалдос", "Пелвір", "Вентор",
+      "Гілдрас", "Інтарік", "Селрік", "Тіріан", "Фалькор", "Ендвал", "Шірант", "Целанос", "Щурвіс", "Дермал",
+      "Мартікс", "Орендал", "Брандос", "Фіронак", "Калент", "Гренліс", "Юверт", "Ісмарон", "Лестор", "Жулвік",
+      "Тріаріс", "Синдор", "Енвальт", "Рунфорд", "Цирвен", "Шельдор", "Армонік", "Мелдар", "Ярфілд", "Щирлас",
+      "Тарленд", "Крейдус", "Зенмір", "Орвілан", "Фірасен", "Люмбар", "Неваліс", "Драмен", "Шальвіс", "Юнкаль",
+      "Цердар", "Хільфор", "Брентік", "Меварк", "Гартул", "Ялдор", "Щанвіс", "Ельстін", "Фурет", "Ігрикс",
+      "Желфір", "Кортай", "Рендул", "Треміс", "Ултарон", "Шармік", "Церанд", "Нолвіс", "Юдрен", "Ятос",
+      "Щильдор", "Валісей", "Партекс", "Гілрод", "Селвіс", "Флемор", "Ірантус", "Кельбіс", "Ендір", "Жанвік",
+      "Трасвік", "Шемріл", "Орвіст", "Цільдон", "Щуріс", "Лемфорт", "Нарвікс", "Ютерн", "Граліс", "Істран",
+      "Делфор", "Філгрейн", "Жармон", "Кардель", "Румес", "Талвік", "Шемтос", "Церлін", "Ялвер", "Щедрис",
+      "Ізранік", "Бартіс", "Малтур", "Грейон", "Долрен", "Форіст", "Шандел", "Юміс", "Клемвін", "Журіс",
+      "Таврон", "Сілвест", "Целтрон", "Аргель", "Щирвік", "Лоріл", "Немрейн", "Осперт", "Варкос", "Фіделір",
+      "Гарліт", "Ярвин", "Інкрес", "Мервант", "Бандік", "Желтрон", "Травіс", "Селанд", "Цембер", "Шараліс",
+      "Юнісей", "Щолвіт", "Грістон", "Ліанорт", "Кверел", "Ендроп", "Руліст", "Мелвіт", "Фальтір", "Церман",
+      "Шанрос", "Яренд", "Ілоріс", "Ганмір", "Ділтрос", "Жардон", "Курент", "Тервал", "Сопралік", "Щенар",
+      "Арвус", "Ельмур", "Цемвіс", "Юнітос", "Шелгар", "Фраліс", "Мінтар", "Ігнайл", "Яртон", "Белмік",
+      "Глендол", "Тардус", "Щедрій", "Ремпіл", "Цірвак", "Олантус", "Шардін", "Фікрем", "Лаврік", "Нідрон",
+      "Єлвік", "Жонтус", "Югорт", "Щарвіс", "Артол", "Квандір", "Ілфіан", "Сулендо", "Трівер", "Цимлор",
+      "Шелвіон", "Фірдал", "Яндрос", "Гамвер", "Мерент", "Омріал", "Наркус", "Юзент", "Дельвар", "Щаркан",
+      "Целетус", "Бріант", "Емфор", "Жалур", "Гріпан", "Фурлай", "Індімір", "Ластор", "Трентіс", "Шарліс",
+      "Цірвел", "Юндер", "Щервіс", "Ялус", "Карвіл", "Гілвард", "Ренфорд", "Ертас", "Женліс", "Мортел",
+      "Шайрон", "Фіргас", "Арвул", "Цірнан", "Ілфорт", "Юнвар", "Щемрон", "Доріліс", "Кемріл", "Сантар",
+      "Таврікс", "Жерлос", "Ондрій", "Бреннус", "Фраліон", "Ялвікс", "Харвік", "Щертан", "Юлісей", "Цирдо",
+      "Шанвір", "Гратіл", "Мевріс", "Ілверт", "Енкрос", "Жилтур", "Танрік", "Селтор", "Армілон", "Феларіон",
+      "Цірвин", "Щанор", "Юрваль", "Шелдор", "Лютрик", "Терас", "Мендол", "Фурент", "Інгар", "Жіртос",
+      "Гулміс", "Шармер", "Юлвік", "Церлюк", "Ізверт", "Трикол", "Кольта", "Фітіс", "Шемвіс", "Брелен"
+    ];
+
+    function generateName() {
+      const randomIndex = Math.floor(Math.random() * names.length);
+      const name = names[randomIndex];
+      const nameEl = document.getElementById('name');
+      nameEl.innerText = name;
+      nameEl.style.display = "block";
+    }
+
+    function copyName() {
+      const name = document.getElementById('name').innerText;
+      if (!name) return;
+      navigator.clipboard.writeText(name);
+    }
+  </script>
+</body>
+</html>

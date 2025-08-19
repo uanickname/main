@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Зворотній зв'язок</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      height: 48px;
+    }
+
+    header .left-text {
+      font-weight: bold;
+      font-size: 28px;
+      user-select: none;
+      color: #222;
+    }
+
+    header .left-text .yellow {
+      color: #F2C94C;
+    }
+
+    header .left-text .blue {
+      color: #0057B7;
+    }
+
+    header button {
+      padding: 8px 20px;
+      font-size: 16px;
+      border-radius: 20px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    header button:hover {
+      background-color: #45a049;
+    }
+
+    /* MAIN */
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .title {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .content {
+      font-size: 18px;
+      line-height: 1.6;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #fff;
+      border-top: 1px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 20px;
+      height: 48px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 16px;
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-info {
+      font-size: 16px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="left-text">
+      <span class="hash">#</span><span class="yellow">StandWith</span><span class="blue">Ukraine</span>
+    </div>
+    <button>Підтримати</button>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <div class="title">Зворотній зв'язок</div>
+    
+    <div class="content">
+      <p>Якщо у вас є питання чи пропозиції, ви можете написати нам на електронну пошту:</p>
+      <p><strong>nicknameua.contact@gmail.com</strong></p>
+      <p>Ми будемо раді відповісти на ваші запитання!</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Головна</a>
+    </div>
+    <div class="footer-info">
+      <span>&copy; 2025</span>
+    </div>
+  </footer>
+
+</body>
+</html>
